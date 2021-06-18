@@ -13,6 +13,7 @@ import ts from "rollup-plugin-typescript2";
 const production = process.env.NODE_ENV === "production";
 const version = JSON.parse(fs.readFileSync("./package.json").toString()).version;
 
+/** @type {import("rollup").RollupOptions} */
 const config = {
    input: "./src/index.ts",
    output: {
@@ -23,6 +24,7 @@ const config = {
       inlineDynamicImports: true
    },
    watch: { clearScreen: false },
+   external: ["discord.js"],
    plugins: [
       // resolve node imports
       node(),
