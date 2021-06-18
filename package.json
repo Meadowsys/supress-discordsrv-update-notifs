@@ -1,0 +1,34 @@
+{
+   "name": "supress-discordsrv-update-notifs",
+   "version": "1.0.0",
+   "private": true,
+   "description": "bot that automatically deletes DiscordSRV update notifications sent to your console channel in Discord",
+   "scripts": {
+      "build": "NODE_ENV=production rollup -c",
+      "dev": "rollup -cw"
+   },
+   "repository": {
+      "type": "git",
+      "url": "git+https://github.com/autumnblazey/supress-discordsrv-update-notifs.git"
+   },
+   "author": "Autumn (autumnblazey)",
+   "license": "AGPL-3.0-only",
+   "devDependencies": {
+      "@rollup/plugin-alias": "^3.1.2",
+      "@rollup/plugin-commonjs": "^19.0.0",
+      "@rollup/plugin-json": "^4.1.0",
+      "@rollup/plugin-node-resolve": "^13.0.0",
+      "@rollup/plugin-replace": "^2.4.2",
+      "@types/node": "^15.12.2",
+      "@types/ws": "^7.4.5",
+      "discord.js": "^12.5.3",
+      "dotenv": "^10.0.0",
+      "rollup": "^2.52.1",
+      "rollup-plugin-license": "^2.5.0",
+      "rollup-plugin-notify": "^1.1.0",
+      "rollup-plugin-terser": "^7.0.2",
+      "rollup-plugin-typescript2": "^0.30.0",
+      "source-map-support": "^0.5.19",
+      "typescript": "^4.3.4"
+   }
+}
