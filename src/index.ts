@@ -23,7 +23,7 @@ env.tokens.forEach(async token => {
       const tester = (r: RegExp) => msg.content.match(r) === null;
 
       if (!(updateMessages.every(tester) && warnings.every(tester))) {
-         const logmsg = `deleting message, (channel ${msg.channel.id}) ${JSON.stringify(msg.content)}`;
+         const logmsg = `deleting message, (user ${msg.author.username}#${msg.author.discriminator} id ${msg.author.id}) (channel ${msg.channel.id}) ${JSON.stringify(msg.content)}`;
          await msg.delete();
          console.log(logmsg);
       }
