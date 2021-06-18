@@ -1,18 +1,18 @@
-// @ts-check
-
 import cjs from "@rollup/plugin-commonjs";
 import json from "@rollup/plugin-json";
 import node from "@rollup/plugin-node-resolve";
 import replace from "@rollup/plugin-replace";
+import fs from "fs";
+import fsp from "fs/promises";
+import { rollup } from "rollup";
 import license from "rollup-plugin-license";
 import notify from "rollup-plugin-notify";
 import { terser } from "rollup-plugin-terser";
 import ts from "rollup-plugin-typescript2";
 
 const production = process.env.NODE_ENV === "production";
-const version = require("./package.json").version;
+const version = JSON.parse(fs.readFileSync("./package.json").toString()).version;
 
-/** @type {import("rollup").RollupOptions} */
 const config = {
    input: "./src/index.ts",
    output: {
@@ -99,3 +99,17 @@ const config = {
 };
 
 export default config;
+
+// production build
+if (process.env.RUN_AS_BUILD_SCRIPT) (async () => {
+   const bundle = await rollup(config);
+   const { output } = await bundle.generate(config.output);
+   if (output.length === 1 && output[0].type === "chunk") {
+      // good! we should only get one chunk
+      let code = output[0].code;
+      if (output[0].map) code = code + `\n//#sourceMappingURL=${output[0].map.toUrl()}`;
+      await fsp.writeFile(output[0].fileName, code);
+      const oldmapper = config.input + ".map"
+      if (fs.existsSync(oldmapper)) fsp.rm(oldmapper);
+   } else console.log(`hrm... output.length === ${output.length}, output[0].type === ${output[0].type}`);
+})();

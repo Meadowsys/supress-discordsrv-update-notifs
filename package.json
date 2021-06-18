@@ -4,7 +4,7 @@
    "private": true,
    "description": "bot that automatically deletes DiscordSRV update notifications sent to your console channel in Discord",
    "scripts": {
-      "build": "NODE_ENV=production rollup -c",
+      "build": "cat rollup.config.js | NODE_ENV=production RUN_AS_BUILD_SCRIPT=yep node --input-type=module",
       "dev": "rollup -cw"
    },
    "repository": {
