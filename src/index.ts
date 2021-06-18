@@ -14,6 +14,10 @@ env.tokens.forEach(async token => {
    client.on("message", async msg => {
       // see comments in ./message-test.ts
 
+      // whitelists have to both exist and not contain the id in order for it to skip
+      if (env.channelWhitelist && !env.channelWhitelist?.includes(msg.channel.id)) return;
+      if (env.usersWhitelist && !env.usersWhitelist?.includes(msg.author.id)) return;
+
       // return true if no match
       // return true if message is ok
       const tester = (r: RegExp) => msg.content.match(r) === null;

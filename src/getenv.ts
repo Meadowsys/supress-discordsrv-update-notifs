@@ -9,6 +9,12 @@ export function getenv() {
 
    return {
       // multiple bots to log in as
-      tokens: process.env.TOKEN.split(",").map(s => s.trim())
+      tokens: process.env.TOKEN.split(",").map(s => s.trim()),
+
+      // run only in these channels, if specified (IDs)
+      channelWhitelist: process.env.CHANNEL_WHITELIST?.split(",").map(s => s.trim()),
+
+      // run only on messages sent by these users, if specified (IDs)
+      usersWhitelist: process.env.USER_WHITELIST?.split(",").map(s => s.trim())
    }
 }
