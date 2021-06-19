@@ -111,7 +111,7 @@ if (process.env.RUN_AS_BUILD_SCRIPT) (async () => {
       let code = output[0].code;
       if (output[0].map) code = code + `\n//#sourceMappingURL=${output[0].map.toUrl()}`;
       await fsp.writeFile(output[0].fileName, code);
-      const oldmapper = config.input + ".map"
+      const oldmapper = config.output.file + ".map"
       if (fs.existsSync(oldmapper)) fsp.rm(oldmapper);
    } else console.log(`hrm... output.length === ${output.length}, output[0].type === ${output[0].type}`);
 })();
