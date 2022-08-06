@@ -1,3 +1,9 @@
+# Deprecated
+
+I don't have time to bother honestly.
+
+-----
+
 # DiscordSRV update notification supressor
 
 are you ~~normal~~ ~~strange~~ ~~normal~~ something like me and have your DiscordSRV console channel unmuted, and actively look through it, *and* are constantly annoyed at the repetitive update notifications? ~~go update bruh~~ Then this bot is for you! It will scan for messages, optionally with a channel/user whitelist, and delete them if they are similar enough to DiscordSRV update messages. Unlike regular bots, this one is designed to be self hosted, possibly alongside your minecraft server, and it can connect to the same account using the same token as your DiscordSRV bot account.
